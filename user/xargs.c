@@ -13,13 +13,13 @@ int main(int argc, char **argv)
         exe_argv[i]=argv[i+1];
     }
 
-    int arg_start = i;
+    int arg_start = i;  // i记录后面要加上的第一个参数的位置
     int n=0;
-    while(read(0, &buf[n], 1)==1){
+    while(read(0, &buf[n], 1)==1){  // 从管道的第一个字节开始读取到末尾
         if(buf[n]=='\n'){
             buf[n]=0;
             exe_argv[arg_start]=buf;
-            exe_argv[arg_start+1]=0;  // ={"echo", "bye", "hello", 0};
+            exe_argv[arg_start+1]=0;  // ={"echo", "bye", "hello", “too”, 0};
 
             if(fork()==0){
                 exec(exe_argv[0], exe_argv);
