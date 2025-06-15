@@ -4,6 +4,8 @@
 #include "user/user.h"
 #include "kernel/fs.h"
 
+void find(const char* path, const char* target);
+
 /**
  * 检查文件名是否以目标字符串结尾
  */
